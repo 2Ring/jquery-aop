@@ -171,8 +171,11 @@
 			if (methods.length == 0)
 				methods = search(source, pointcut, advice);
 
-			for (var i in methods)
-				advices[advices.length] = weaveOne(methods[i].source, methods[i].method, methods[i].advice);
+				for (var i in methods) {
+					if (methods.hasOwnProperty(i)) {
+						advices[advices.length] = weaveOne(methods[i].source, methods[i].method, methods[i].advice);
+					}
+				}
 
 		} 
 		else
